@@ -35,12 +35,7 @@ function App() {
     const loadData = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/v1/fastings?month=${monthNow}&year=${yearNow}`,
-          {
-            headers: {
-              'Cache-Control': 'no-cache',
-            },
-          }
+          `${import.meta.env.VITE_API_URL}/api/v1/fastings?month=${monthNow}&year=${yearNow}`
         );
 
         if (data.data) {
