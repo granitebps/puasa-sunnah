@@ -20,4 +20,19 @@ export interface Type {
   id: number;
   name: string;
   description: string;
+  background_color?: string;
+  text_color?: string;
+}
+
+export type ExportScope =
+  | 'current-month'
+  | 'specific-month'
+  | 'current-year';
+
+export interface ExportRequest {
+  scope: ExportScope;
+  month: number;
+  year: number;
+  typeIds: number[];
+  reminder: 'none' | 'one-day-before';
 }
