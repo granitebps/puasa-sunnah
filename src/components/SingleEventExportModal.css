@@ -1,0 +1,54 @@
+.single-event-export-modal {
+  max-width: 520px;
+}
+
+.single-event-details {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 16px;
+  padding: 14px;
+}
+
+.single-event-details time,
+.single-event-details p {
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.single-event-details p {
+  margin: 0;
+}
+
+.single-event-provider-panel {
+  margin-top: 12px;
+}
+
+.single-event-provider-button,
+.single-event-provider-action {
+  display: inline-block;
+  margin-top: 14px;
+}
+
+.single-event-provider-action {
+  background: #166534;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 9px 13px;
+  text-decoration: none;
+}
+
+.single-event-status {
+  color: #166534;
+  font-size: 14px;
+  min-height: 22px;
+}
+
+.single-event-status p {
+  margin-bottom: 0;
+}

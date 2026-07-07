@@ -177,7 +177,7 @@ export const buildPuasaSunnahIcs = (
       `DTSTART;VALUE=DATE:${start}`,
       `DTEND;VALUE=DATE:${end}`,
       `SUMMARY:${escapeIcsText(summary)}`,
-      `DESCRIPTION:${escapeIcsText(event.descriptions.join('\n') || 'Puasa Sunnah Calendar')}`,
+      `DESCRIPTION:${escapeIcsText(buildCalendarEventDescription(event.descriptions.join('\n')))}`,
       'TRANSP:TRANSPARENT',
     );
 
@@ -209,3 +209,4 @@ export const downloadIcs = (filename: string, contents: string): void => {
   anchor.remove();
   URL.revokeObjectURL(url);
 };
+import { buildCalendarEventDescription } from './calendarEventDescription.ts';

@@ -14,6 +14,10 @@ An **Add to calendar** button above the calendar opens an accessible modal. The 
 
 The app fetches all 12 months of the current year in parallel against the existing monthly fasting endpoint. Available type filters come from `/api/v1/types`; schedule records are filtered to the selected export period. Export remains disabled while loading, when no type is selected, or when no matching events exist.
 
+### Individual fasting event
+
+Selecting a fasting event opens a smaller provider modal with the event name and date. It uses the same Native Calendar, Google Calendar, and Outlook tabs as bulk export. Native Calendar downloads a one-event `.ics` file and supports both reminder options. Google Calendar and Outlook open prefilled all-day compose pages in a new tab; their provider defaults control notifications, which users can adjust before saving.
+
 ## Export Behavior
 
 The app generates one all-day iCalendar event per unique Gregorian date. Fasting types sharing a date are merged into its title and description. Each event contains:
@@ -27,6 +31,8 @@ The app generates one all-day iCalendar event per unique Gregorian date. Fasting
 
 Each event includes `TRANSP:TRANSPARENT`. Text values are escaped and lines are folded at 75 UTF-8 octets. Date-only values prevent timezone shifts. The calendar provider may still apply its configured default alert when no `VALARM` is included.
 
+Every exported or prefilled event description preserves the fasting description when available, then adds: “Jadwal dari Puasa Sunnah Calendar.” and “Lihat jadwal puasa sunnah lainnya: https://puasa-sunnah.granitebps.com”. The footer appears once per event, including dates with merged fasting types.
+
 After generation, the app downloads exactly one UTF-8 `.ics` file containing one `VCALENDAR` and all selected dates. Calendar-provider import and final confirmation remain controlled by the user.
 
 The export modal uses a two-step flow: configure and download the schedule, then import it. Step 2 provides accessible tabs for Native Calendar, Google Calendar, and Outlook. Each tab contains focused steps, provider limitations, official documentation, and direct Google/Outlook calendar actions. After download, the modal remains open, shows the downloaded filename, resets Step 2 to Native Calendar, and scrolls the guide into view.
@@ -36,8 +42,10 @@ The export modal uses a two-step flow: configure and download the schedule, then
 - `src/features/calendarExport.ts`: event filtering and merging, descriptive filename creation, iCalendar serialization, and download delivery.
 - `src/components/AddToCalendarModal.tsx`: scope, date, type, reminder, loading, validation, error, and retry UI.
 - `src/components/CalendarImportGuide.tsx`: accessible provider tabs and import instructions.
+- `src/components/SingleEventExportModal.tsx`: individual-event provider selection and actions.
 - `src/components/AddToCalendarModal.css`: modal and form presentation.
 - `src/features/calendarImportGuide.ts`: provider guide content.
+- `src/features/singleEventCalendar.ts`: Google/Outlook compose URLs and single-event filenames.
 - `src/api/fastingApi.ts`: fasting schedule and fasting-type requests.
 - `src/App.tsx`: current-year API requests, calendar-toolbar trigger, and export orchestration.
 - `src/types.ts`: shared API and export types.

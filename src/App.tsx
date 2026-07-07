@@ -25,6 +25,7 @@ import { enUS } from 'date-fns/locale/en-US';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { fetchFastings, fetchFastingTypes } from './api/fastingApi';
 import AddToCalendarModal from './components/AddToCalendarModal';
+import SingleEventExportModal from './components/SingleEventExportModal';
 import {
   buildPuasaSunnahIcs,
   createCalendarFilename,
@@ -105,6 +106,7 @@ function App() {
   const [exportLoadError, setExportLoadError] = useState<string | null>(null);
   const [deliveryError, setDeliveryError] = useState<string | null>(null);
   const [deliverySuccess, setDeliverySuccess] = useState<string | null>(null);
+  const [selectedFasting, setSelectedFasting] = useState<Fasting | null>(null);
   const exportRequestSequence = useRef(0);
   const exportButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -158,8 +160,8 @@ function App() {
     setYearNow(getYear(middleDate));
   }, []);
 
-  const onSelectEvent = useCallback((e: Event) => {
-    alert(e.title);
+  const onSelectEvent = useCallback((event: Event) => {
+    setSelectedFasting(event.resource as Fasting);
   }, []);
 
   const { defaultDate } = useMemo(
@@ -313,6 +315,10 @@ function App() {
         onLoad={loadExportFastings}
         open={exportOpen}
         types={exportTypes}
+      />
+      <SingleEventExportModal
+        fasting={selectedFasting}
+        onClose={() => setSelectedFasting(null)}
       />
     </div>
   );

@@ -47,6 +47,15 @@ test('builds one transparent all-day event per unique date', () => {
   assert.match(calendar, /SUMMARY:Puasa Sunnah: Senin Kamis & Ayyamul Bidh/);
   assert.match(calendar, /DESCRIPTION:Puasa hari Senin\\nAyyamul Bidh/);
   assert.match(calendar, /TRANSP:TRANSPARENT/);
+  const unfoldedCalendar = calendar.replace(/\r\n /g, '');
+  assert.equal(
+    unfoldedCalendar.match(/Jadwal dari Puasa Sunnah Calendar\./g)?.length,
+    1,
+  );
+  assert.match(
+    unfoldedCalendar,
+    /Lihat jadwal puasa sunnah lainnya: https:\/\/puasa-sunnah\.granitebps\.com/,
+  );
   assert.doesNotMatch(calendar, /BEGIN:VALARM/);
   assert.match(calendar, /END:VCALENDAR\r\n$/);
 });
