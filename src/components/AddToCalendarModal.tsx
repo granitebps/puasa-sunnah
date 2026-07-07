@@ -142,6 +142,10 @@ function AddToCalendarModal({
         </div>
 
         <form onSubmit={handleSubmit}>
+          <div className='calendar-export-step-header'>
+            <span>Step 1</span>
+            <h3>Choose and download schedule</h3>
+          </div>
           <fieldset>
             <legend>Schedule period</legend>
             <label>
@@ -264,7 +268,7 @@ function AddToCalendarModal({
               Cancel
             </button>
             <button className='calendar-export-primary' disabled={!canExport} type='submit'>
-              Add to calendar
+              Download .ics file
             </button>
           </div>
         </form>

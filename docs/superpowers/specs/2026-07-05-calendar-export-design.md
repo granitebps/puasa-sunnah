@@ -29,13 +29,13 @@ Each event includes `TRANSP:TRANSPARENT`. Text values are escaped and lines are 
 
 After generation, the app downloads exactly one UTF-8 `.ics` file containing one `VCALENDAR` and all selected dates. Calendar-provider import and final confirmation remain controlled by the user.
 
-The export modal includes an expandable import guide for Apple Calendar, Google Calendar, Outlook, and mobile calendar apps. After download, the modal remains open, shows the downloaded filename, and expands the guide.
+The export modal uses a two-step flow: configure and download the schedule, then import it. Step 2 provides accessible tabs for Native Calendar, Google Calendar, and Outlook. Each tab contains focused steps, provider limitations, official documentation, and direct Google/Outlook calendar actions. After download, the modal remains open, shows the downloaded filename, resets Step 2 to Native Calendar, and scrolls the guide into view.
 
 ## Components
 
 - `src/features/calendarExport.ts`: event filtering and merging, descriptive filename creation, iCalendar serialization, and download delivery.
 - `src/components/AddToCalendarModal.tsx`: scope, date, type, reminder, loading, validation, error, and retry UI.
-- `src/components/CalendarImportGuide.tsx`: expandable provider-specific import instructions.
+- `src/components/CalendarImportGuide.tsx`: accessible provider tabs and import instructions.
 - `src/components/AddToCalendarModal.css`: modal and form presentation.
 - `src/features/calendarImportGuide.ts`: provider guide content.
 - `src/api/fastingApi.ts`: fasting schedule and fasting-type requests.

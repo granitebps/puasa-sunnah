@@ -140,35 +140,115 @@
   color: #166534;
 }
 
+.calendar-export-step-header,
+.calendar-import-guide-header {
+  margin-top: 16px;
+}
+
+.calendar-export-step-header span,
+.calendar-import-guide-header span {
+  color: #166534;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.calendar-export-step-header h3,
+.calendar-import-guide-header h3 {
+  font-size: 16px;
+  margin: 3px 0 0;
+}
+
 .calendar-import-guide {
   border-top: 1px solid #e5e7eb;
-  margin-top: 8px;
+  margin-top: 16px;
   padding-top: 14px;
 }
 
-.calendar-import-guide summary {
-  cursor: pointer;
+.calendar-import-guide-ready {
+  border-color: #86efac;
+}
+
+.calendar-import-guide-header {
+  margin-top: 0;
+}
+
+.calendar-import-guide-header p,
+.calendar-import-panel > p {
+  color: #374151;
+  font-size: 14px;
+  margin: 6px 0 0;
+}
+
+.calendar-import-tabs {
+  display: flex;
+  gap: 6px;
+  margin-top: 14px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.calendar-import-tabs button {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  color: #374151;
+  flex: 0 0 auto;
+  padding: 7px 11px;
+  white-space: nowrap;
+}
+
+.calendar-import-tabs button.calendar-import-tab-active {
+  background: #dcfce7;
+  border-color: #166534;
+  color: #14532d;
   font-weight: 600;
 }
 
-.calendar-import-guide-content {
-  color: #374151;
-  font-size: 14px;
-  padding-top: 6px;
+.calendar-import-panel {
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 14px;
 }
 
-.calendar-import-guide-content h3 {
+.calendar-import-panel ol {
   font-size: 14px;
-  margin: 12px 0 4px;
-}
-
-.calendar-import-guide-content ol {
-  margin: 0;
+  margin: 12px 0 0;
   padding-left: 20px;
 }
 
-.calendar-import-guide-content li + li {
-  margin-top: 4px;
+.calendar-import-panel li + li {
+  margin-top: 6px;
+}
+
+.calendar-import-note {
+  color: #6b7280;
+  font-size: 13px;
+  margin: 12px 0 0;
+}
+
+.calendar-import-links {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.calendar-import-links a {
+  color: #166534;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.calendar-import-links a:first-child:not(:last-child) {
+  background: #166534;
+  border-radius: 6px;
+  color: #fff;
+  padding: 8px 12px;
+  text-decoration: none;
 }
 
 .calendar-export-actions {

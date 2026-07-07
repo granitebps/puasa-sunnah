@@ -6,12 +6,23 @@ import { calendarImportGuides } from '../src/features/calendarImportGuide.ts';
 test('provides import instructions for supported calendar flows', () => {
   assert.deepEqual(
     calendarImportGuides.map((guide) => guide.title),
-    ['Apple Calendar', 'Google Calendar', 'Outlook', 'Mobile'],
+    ['Native Calendar', 'Google Calendar', 'Outlook'],
   );
   assert.ok(calendarImportGuides.every((guide) => guide.steps.length > 1));
-  assert.match(
-    calendarImportGuides.find((guide) => guide.title === 'Google Calendar')
-      ?.steps.join(' ') ?? '',
-    /Import and export/i,
+  assert.ok(
+    calendarImportGuides.every((guide) => guide.helpHref.startsWith('https://')),
   );
+  assert.deepEqual(
+    calendarImportGuides.map((guide) => guide.id),
+    ['native', 'google', 'outlook'],
+  );
+  const googleGuide = calendarImportGuides.find(
+    (guide) => guide.id === 'google',
+  );
+  assert.match(googleGuide?.steps.join(' ') ?? '', /Import & export/i);
+  assert.match(googleGuide?.action?.href ?? '', /calendar\.google\.com/);
+  const outlookGuide = calendarImportGuides.find(
+    (guide) => guide.id === 'outlook',
+  );
+  assert.match(outlookGuide?.action?.href ?? '', /outlook\.live\.com/);
 });
