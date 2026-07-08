@@ -1,0 +1,114 @@
+:root,
+:root[data-theme='light'] {
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f9fafb;
+  --color-surface-hover: #f3f4f6;
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+  --color-border: #d1d5db;
+  --color-border-subtle: #e5e7eb;
+  --color-weekend-bg: #ffdbe0;
+  --color-weekend-text: #dc2626;
+  --color-today-bg: #eaf6ff;
+  --color-primary: #166534;
+  --color-primary-hover: #14532d;
+  --color-primary-soft: #dcfce7;
+  --color-error: #b91c1c;
+  --color-success: #166534;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #18181b;
+  --color-surface: #18181b;
+  --color-surface-raised: #27272a;
+  --color-surface-hover: #3f3f46;
+  --color-text: #f4f4f5;
+  --color-text-muted: #a1a1aa;
+  --color-border: #52525b;
+  --color-border-subtle: #3f3f46;
+  --color-weekend-bg: #302327;
+  --color-weekend-text: #fca5a5;
+  --color-today-bg: #1e293b;
+  --color-primary: #22c55e;
+  --color-primary-hover: #16a34a;
+  --color-primary-soft: #143d25;
+  --color-error: #fca5a5;
+  --color-success: #86efac;
+}
+
+html,
+#root {
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  margin: 8px;
+  min-height: 100%;
+}
+
+button,
+select {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.rbc-calendar,
+.rbc-month-view,
+.rbc-month-row,
+.rbc-header,
+.rbc-day-bg,
+.rbc-toolbar,
+.rbc-overlay {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.rbc-month-view,
+.rbc-header,
+.rbc-header + .rbc-header,
+.rbc-month-row + .rbc-month-row,
+.rbc-day-bg + .rbc-day-bg,
+.rbc-overlay,
+.rbc-overlay-header {
+  border-color: var(--color-border-subtle);
+}
+
+.rbc-off-range-bg {
+  background: var(--color-surface-raised);
+}
+
+.rbc-today {
+  background: var(--color-today-bg);
+}
+
+.rbc-toolbar button {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.rbc-toolbar button:hover,
+.rbc-toolbar button:focus,
+.rbc-toolbar button:active {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+.rbc-button-link,
+.rbc-show-more {
+  color: var(--color-text);
+}
+
+.theme-toggle {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  min-width: 38px;
+}

@@ -4,6 +4,7 @@ import { PostHogProvider } from 'posthog-js/react';
 import { Analytics } from '@vercel/analytics/react';
 
 import App from './App.tsx';
+import './theme.css';
 
 const options = {
   api_host: import.meta.env.VITE_POSTHOG_HOST,

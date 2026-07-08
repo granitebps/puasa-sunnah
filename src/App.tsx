@@ -32,6 +32,14 @@ import {
   downloadIcs,
   filterCalendarEvents,
 } from './features/calendarExport';
+import {
+  applyTheme,
+  getInitialTheme,
+  readStoredTheme,
+  THEME_MEDIA_QUERY,
+  type Theme,
+  writeStoredTheme,
+} from './features/theme';
 import { formatMonth, getDateColor, getMiddleDate } from './utils';
 import { NOW, WEEKEND_BG_COLOR } from './constants';
 import { ExportRequest, Fasting, Type } from './types';
@@ -56,6 +64,8 @@ const apiBaseUrl =
 interface CalendarToolbarProps extends ToolbarProps {
   buttonRef: RefObject<HTMLButtonElement>;
   onAddToCalendar: () => void;
+  onToggleTheme: () => void;
+  theme: Theme;
 }
 
 function CalendarToolbar({
@@ -64,6 +74,8 @@ function CalendarToolbar({
   localizer: toolbarLocalizer,
   onAddToCalendar,
   onNavigate,
+  onToggleTheme,
+  theme,
 }: CalendarToolbarProps) {
   const { messages } = toolbarLocalizer;
 
@@ -90,6 +102,15 @@ function CalendarToolbar({
         >
           Add to calendar
         </button>
+        <button
+          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          className='theme-toggle'
+          onClick={onToggleTheme}
+          title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          type='button'
+        >
+          <span aria-hidden='true'>{theme === 'dark' ? '☀' : '☾'}</span>
+        </button>
       </span>
     </div>
   );
@@ -107,6 +128,7 @@ function App() {
   const [deliveryError, setDeliveryError] = useState<string | null>(null);
   const [deliverySuccess, setDeliverySuccess] = useState<string | null>(null);
   const [selectedFasting, setSelectedFasting] = useState<Fasting | null>(null);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const exportRequestSequence = useRef(0);
   const exportButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -225,6 +247,31 @@ function App() {
     setExportOpen(true);
   }, []);
 
+  useEffect(() => {
+    applyTheme(theme);
+  }, [theme]);
+
+  useEffect(() => {
+    if (readStoredTheme() || typeof window.matchMedia !== 'function') {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia(THEME_MEDIA_QUERY);
+    const handleSystemThemeChange = (event: MediaQueryListEvent) => {
+      setTheme(event.matches ? 'dark' : 'light');
+    };
+    mediaQuery.addEventListener('change', handleSystemThemeChange);
+    return () => mediaQuery.removeEventListener('change', handleSystemThemeChange);
+  }, []);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((currentTheme) => {
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      writeStoredTheme(nextTheme);
+      return nextTheme;
+    });
+  }, []);
+
   const { components } = useMemo(
     () => ({
       components: {
@@ -233,6 +280,8 @@ function App() {
             {...props}
             buttonRef={exportButtonRef}
             onAddToCalendar={openExportModal}
+            onToggleTheme={toggleTheme}
+            theme={theme}
           />
         ),
         month: {
@@ -240,7 +289,7 @@ function App() {
         },
       },
     }),
-    [openExportModal],
+    [openExportModal, theme, toggleTheme],
   );
 
   const exportToCalendar = useCallback(

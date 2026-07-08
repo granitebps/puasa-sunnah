@@ -11,8 +11,8 @@
 }
 
 .calendar-export-primary {
-  background: #166534;
-  border: 1px solid #166534;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
   border-radius: 6px;
   color: #fff;
   cursor: pointer;
@@ -20,14 +20,14 @@
 }
 
 .rbc-toolbar button.calendar-export-toolbar-button {
-  background: #166534;
-  border-color: #166534;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
   color: #fff;
 }
 
 .rbc-toolbar button.calendar-export-toolbar-button:hover,
 .rbc-toolbar button.calendar-export-toolbar-button:focus {
-  background: #14532d;
+  background: var(--color-primary-hover);
   color: #fff;
 }
 
@@ -48,7 +48,7 @@
 
 .calendar-export-modal {
   -webkit-overflow-scrolling: touch;
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 10px;
   box-shadow: 0 18px 45px rgb(0 0 0 / 25%);
   box-sizing: border-box;
@@ -60,6 +60,7 @@
   padding: 20px;
   touch-action: pan-y;
   width: 100%;
+  color: var(--color-text);
 }
 
 .calendar-export-header,
@@ -114,8 +115,10 @@
 }
 
 .calendar-export-modal select {
-  border: 1px solid #9ca3af;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 5px;
+  color: var(--color-text);
   padding: 7px 8px;
 }
 
@@ -129,15 +132,15 @@
 }
 
 .calendar-export-error {
-  color: #b91c1c;
+  color: var(--color-error);
 }
 
 .calendar-export-help {
-  color: #6b7280;
+  color: var(--color-text-muted);
 }
 
 .calendar-export-success {
-  color: #166534;
+  color: var(--color-success);
 }
 
 .calendar-export-step-header,
@@ -147,7 +150,7 @@
 
 .calendar-export-step-header span,
 .calendar-import-guide-header span {
-  color: #166534;
+  color: var(--color-primary);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -161,13 +164,13 @@
 }
 
 .calendar-import-guide {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-border-subtle);
   margin-top: 16px;
   padding-top: 14px;
 }
 
 .calendar-import-guide-ready {
-  border-color: #86efac;
+  border-color: var(--color-primary);
 }
 
 .calendar-import-guide-header {
@@ -176,7 +179,7 @@
 
 .calendar-import-guide-header p,
 .calendar-import-panel > p {
-  color: #374151;
+  color: var(--color-text);
   font-size: 14px;
   margin: 6px 0 0;
 }
@@ -190,24 +193,24 @@
 }
 
 .calendar-import-tabs button {
-  background: #fff;
-  border: 1px solid #d1d5db;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 999px;
-  color: #374151;
+  color: var(--color-text);
   flex: 0 0 auto;
   padding: 7px 11px;
   white-space: nowrap;
 }
 
 .calendar-import-tabs button.calendar-import-tab-active {
-  background: #dcfce7;
-  border-color: #166534;
-  color: #14532d;
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
+  color: var(--color-text);
   font-weight: 600;
 }
 
 .calendar-import-panel {
-  background: #f9fafb;
+  background: var(--color-surface-raised);
   border-radius: 8px;
   margin-top: 10px;
   padding: 14px;
@@ -224,7 +227,7 @@
 }
 
 .calendar-import-note {
-  color: #6b7280;
+  color: var(--color-text-muted);
   font-size: 13px;
   margin: 12px 0 0;
 }
@@ -238,13 +241,13 @@
 }
 
 .calendar-import-links a {
-  color: #166534;
+  color: var(--color-primary);
   font-size: 14px;
   font-weight: 600;
 }
 
 .calendar-import-links a:first-child:not(:last-child) {
-  background: #166534;
+  background: var(--color-primary);
   border-radius: 6px;
   color: #fff;
   padding: 8px 12px;

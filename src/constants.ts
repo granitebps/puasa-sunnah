@@ -1,4 +1,4 @@
-export const WEEKEND_BG_COLOR = '#ffdbe0';
-export const WEEKEND_COLOR = '#ff0000';
+export const WEEKEND_BG_COLOR = 'var(--color-weekend-bg)';
+export const WEEKEND_COLOR = 'var(--color-weekend-text)';
 export const NOW = new Date();
-export const DATE_OFF_RANGE_COLOR = '#999999';
+export const DATE_OFF_RANGE_COLOR = 'var(--color-text-muted)';
