@@ -1,7 +1,15 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { fetchFastings, fetchFastingTypes } from '../src/api/fastingApi.ts';
+import {
+  apiClient,
+  fetchFastings,
+  fetchFastingTypes,
+} from '../src/api/fastingApi.ts';
+
+test('includes the official app identifier on every API client request', () => {
+  assert.equal(apiClient.defaults.headers['X-API-Client'], 'official-app');
+});
 
 test('loads fasting types from the types endpoint', async () => {
   let requestedUrl = '';
